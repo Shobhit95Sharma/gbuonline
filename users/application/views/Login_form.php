@@ -3,15 +3,16 @@
  *  Created on :Jul 10, 2015, 12:18:54 PM
  *  Author     :Varun Garg <varun.10@live.com>
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
 <html>
     <head>
         <title>Login to GBU Online</title>
-        <link rel="stylesheet" href="<?php echo base_url() . 'application/views/common/' . 'css/bootstrap.min.css' ?>">
-        <link rel="stylesheet" href="<?php echo base_url() . 'application/views/common/' . 'css/varun.css' ?>">
-        <script type="text/javascript" src="<?php echo base_url() . 'application/views/common/' . 'js/jquery-2.1.3.min.js' ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url() . 'application/views/common/' . 'js/bootstrap.min.js' ?>"></script>
+        <link rel="shortcut icon" href="<?php echo $this->cdn->base() . '/resources/images/favicon.ico' ?>">
+        <link rel="stylesheet" href="<?php echo $this->cdn->users() . 'application/views/common/' . 'css/bootstrap.min.css' ?>">
+        <link rel="stylesheet" href="<?php echo $this->cdn->users() . 'application/views/common/' . 'css/varun.css' ?>">
+        <script type="text/javascript" src="<?php echo $this->cdn->users() . 'application/views/common/' . 'js/jquery-2.1.3.min.js' ?>"></script>
+        <script type="text/javascript" src="<?php echo $this->cdn->users() . 'application/views/common/' . 'js/bootstrap.min.js' ?>"></script>
         <style>
             .centered-form{
                 margin-top: 60px;
@@ -21,7 +22,7 @@
                 box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
             }
             body{
-                background-image: url('<?php echo base_url() . 'application/views/common/' . 'color-splash.jpg' ?>');
+                background-image: url('<?php echo $this->cdn->users() . 'application/views/common/' . 'color-splash.jpg' ?>');
 
             }
         </style>
@@ -35,11 +36,11 @@
                     <div class="panel panel-default">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title"><div class="text-center"> Sign in to Online</div></h3>
+                            <h3 class="panel-title"><div class="text-center"> Sign in to GBU Online</div></h3>
                         </div>
                         <div class="panel-body">
                             <center>
-                                <img width="50%" src ="<?php echo dirname(base_url()) . '/resources/images/' . '200x200.bmp' ?>" >
+                                <img width="50%" src ="<?php echo $this->cdn->base() . '/resources/images/' . '200x200.bmp' ?>" >
                             </center>
 
                             <br>
@@ -65,6 +66,8 @@
 
                             </form>
                             <a class="btn btn-success btn-lg btn-block" href="<?= base_url('register') ?>" > Sign Up </a>
+                            <br />
+                            <a class="btn btn-warning btn-lg btn-block" href="<?= base_url('Reset_password') ?>" >Account Recovery</a>
                         </div>
                     </div>
                 </div>

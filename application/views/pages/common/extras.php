@@ -1,55 +1,20 @@
 <style>
     #h {
-        background-color: pink;
+        background-color:#C1CBCB;
     }
     #t {
-        color: black;
-    }
-    #getFixed
-    {
-
+        color: #1E2626;
     }
 </style>
 
 
-<script>
-    jQuery(function ($) {
-        function fixDiv() {
-            var $cache = $('#getFixed');
-            var $height = $(window).scrollTop();
-            var $h_of_footer = $("#getFooterLen").outerHeight();
-            var $h_of_extras = $("#getFixed").outerHeight();
-            var $h_of_window = $(document).height();
-            var $p_width = $(document).width();
-            var $sum = $height + $h_of_extras + $h_of_footer + 150;
-            if ($(this).scrollTop() >= 100 && $sum<$h_of_window && $p_width >978)
-                $cache.css({
-                    'top': $height - 100
-                });
-            else if ($(this).scrollTop() >= 100 )
-                ;
-            else
-                $cache.css({
-                    'top': 'auto'
-                });
-
-
-        }
-        $(window).scroll(fixDiv);
-        fixDiv();
-    });
-</script>
-
-
 <div class="col-md-3 stic" id="getFixed" style="padding-left:30px; ">
 
-
-
-    <div class="divr"  style="  background-color:purple; padding-top:10px; padding-bottom:10px; border-radius: 7px;">
+    <div class="divr"  style="background-color:#839797;padding-top:10px; padding-bottom:10px; border-radius: 7px;">
 
 
 
-        <font size="5" color="white"><center>Extras</center></font>   
+        <b><font size="5" color="black"><center>Quick Links</center></font>   </b>
     </div>
     <br>
 

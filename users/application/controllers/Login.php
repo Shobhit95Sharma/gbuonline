@@ -6,6 +6,7 @@
  *  By calling this php file users can be made to log in on this site
  *  After making the users login, it stores their details in session
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
@@ -24,7 +25,7 @@ class Login extends CI_Controller {
         $this->load->library('form_validation');
 
         if ($this->session->userdata('loggedin') == 1) {//already done
-            redirect('/all_events');
+            redirect('/events');
         } else if ($this->form_validation->run() == FALSE) {
             $this->load->view('Login_form');
         } else {
@@ -32,20 +33,20 @@ class Login extends CI_Controller {
             if (isset($_REQUEST['redirect']) && $_REQUEST['redirect'] != "") {//anyone wants to get back            
                 redirect($_REQUEST['redirect']);
             } else {
-                redirect('/all_events'); //otherwise
+                redirect('/events'); //otherwise
             }
         }
     }
 
     function check_details() {
-        $username = $this->input->post('username');
+        $username = $this->db->escape($this->input->post('username'));
         $this->username = $username;
         $password = $this->input->post('password');
-        $query = $this->db->query("select *  from users where username='$username' or email='$username'");
-//            echo $hash;
+
+        $query = $this->db->query("select *  from users where username=$username or email=$username");
         if ($query->num_rows() > 0) {
             $row = $query->row();
-            if ($row->active == 0) {
+            if ($row->active == 0 || $row->active == 2) {
                 $this->form_validation->set_message('check_details', 'Your account has not activated yet. Please Check your email');
                 return FALSE;
             }
@@ -61,6 +62,10 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('full_name', $row->full_name);
                 $this->session->set_userdata('roll_number', $row->roll_number);
                 $this->session->set_userdata('phone_number', $row->phone_number);
+                $this->session->set_userdata('profile_picture', $row->profile_picture);
+                $this->session->set_userdata('level', $this->permissions->get_level());
+
+                $this->logger->insert('Logged in.', TRUE, TRUE);
                 return TRUE;
             }
         }

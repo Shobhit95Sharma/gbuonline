@@ -1,6 +1,6 @@
 <div class="row">
-<div class="page-header" style = "background-color: darkred; padding-top: 10px; padding-left: 50px; margin-top: 15px;">
-    <font color="white"  face="Monotype Corsiva">
+<div class="page-header" style = "background-color: black; padding-top: 10px; padding-left: 50px; margin-top: 15px;">
+    <font color="white"  face="Georgia Bold">
 
             <h1>Virtual Notice Board<!--<small>Keep Calm and Write.....</small></h1>-->
 			
@@ -50,11 +50,17 @@
                             echo $row->date;    
                         ?>
                         </div>
-                        <div class="col-md-3">
+                       
+                           <div class="col-md-3">
                         <?php
-                            echo $row->title;    
+                            echo $row->title ." ( " ?><a style="text-decoration:none;" href="<?php echo $this->cdn->res_url($row->link)?>">Open</a><?php echo " )"
                         ?>
                         </div>
+                       <!--  <div class="col-md-3">
+                        <a style="text-decoration:none;"href="<?php echo $this->cdn->res_url($row->link)?>">Open</a>
+                        </div>-->    
+                            
+                            
                          <div class="col-md-3">
                         <?php
                             echo $row->issuing_authority;    

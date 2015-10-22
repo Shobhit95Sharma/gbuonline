@@ -1,6 +1,6 @@
 <div class="row">
-<div class="page-header" style = "background-color: darkred; padding-top: 10px; padding-left: 50px; margin-top: 15px;">
-    <font color="white"  face="Monotype Corsiva">
+<div class="page-header" style = "background-color: black; padding-top: 10px; padding-left: 50px; margin-top: 15px;">
+    <font color="white"  face="Georgia Bold">
 
             <h1>List Of Wardens</br><!--<small>Keep Calm and Write.....</small></h1>-->
 	</font>      
@@ -17,7 +17,6 @@
 						<li><a href="<?php echo site_url('hostels/wname')?>">Warden Name</a></li>
 						<li><a href="<?php echo site_url('hostels/woffice')?>">Warden Office</a></li>
 					</ul>
-				    
 				</div>   
  </div> 
 </div>
@@ -28,11 +27,11 @@
                     <div class="col-md-4"><b>Warden Name</b></div>
                     <div class="col-md-4"><b>Warden's Office</b></div></font>
             </div><hr /><hr />
-               
                        <?php
-                        /*$this->db->where('id','1');*/
-                        $q=$this->db->get('warden');
+                        
+                        $q=$this->db->query("select * from warden");
                         $results=$q->result();
+
                         foreach ($results as $row)
                         {
                         ?>

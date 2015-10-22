@@ -1,4 +1,4 @@
-</div> <!--for container fluid opened in link.php-->
+	</div> <!--for container fluid opened in link.php-->
 
     <style>
 
@@ -8,8 +8,7 @@
             width : 100%;
 			position: absolute; 
 			z-index: 100; 
-			background-color: slategray;
-			height: 420px; <!--to solve footer issue--><!--if you edit this, then also edit 'padding-bottom' in body tag, with the same amount-->
+			background-color: #2D2D2D;
         }
     </style>
 
@@ -19,62 +18,15 @@
 
         <div class="wrapper" id="getFooterLen">
 
-            <div class="row" >
+            <div class="row" style="margin-left:120px;">
 			
-                <div class="col-md-2 col-md-offset-1">
-						<h4><b><font color = "white">CONTACT</font></b></h4>
-
-						<button type="button" class="btn btn-block" data-toggle="modal" data-target=".bs-example-modal-lg-1">Team</button>
+                <div class="col-md-3">
 						
-                    <div class="modal fade bs-example-modal-lg-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <center> 
-                                    <hr>
-                                    We are a group of 6 students working under guidance of <br><b>Dr. Amit K. Awasthi.</b> <hr>
-                                </center>
-                                <center>     
-                                    <ul>
-                                        <i>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <img src="<?php echo base_url('resources/images/varun.jpg') ?>" height ="120" width="120"><br><b>VARUN GARG </b>(Admin/User Panel)
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <img src="<?php echo base_url('resources/images/shobhit.jpg') ?>" height ="120" width="120"><br><b>SHOBHIT SHARMA</b> (Hostel Management System)
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <img src="<?php echo base_url('resources/images/bhawesh.jpg') ?>" height ="120" width="120"><br><b>BHAWESH CHANDOLA</b> (Front End Database Connectivity)
-
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <img src="<?php echo base_url('resources/images/sarthak.jpg') ?>" height ="120" width="120"><br><b>SARTHAK GARG</b> (Front End Designer)<br>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <img src="<?php echo base_url('resources/images/rajat.jpg') ?>" height ="120" width="120"><br><b>RAJAT SAXENA</b> (Front End Designer)<br>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <img src="<?php echo base_url('resources/images/shrey.jpg') ?>" height ="120" width="120"><br><b>SHREY KAPOOR</b> (Site Ambassador/Marketting Head)<br>
-                                                </div>
-                                            </div>
-
-
-                                        </i>      
-
-                                    </ul>
-                                    <hr>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <br>
-                    <button type="button" class="btn btn-block" data-toggle="modal" data-target=".bs-example-modal-lg-2">Vision</button>
+						<a style="cursor:pointer;" data-toggle="modal" data-target=".bs-example-modal-lg-2"><font color = "white"><b>Vision</b></font></a>
+						<br/><br/>
+						<a href = "<?php echo site_url('feat/contributors')?>" style="cursor:pointer;"><font color = "white"><b>Contributors</b></font></a>
+						<br/><br/>
+						
 
                     <div class="modal fade bs-example-modal-lg-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -91,12 +43,7 @@
                             </div>
                         </div>
                     </div>
-					<br>
-                    
-                    
-                
-				
-				<button type="button" class="btn btn-block" data-toggle="modal" data-target=".bs-example-modal-lg-5">Connect With Us</button>
+				<a data-toggle="modal" data-target=".bs-example-modal-lg-5" style="cursor:pointer;"><font color = "white"><b>Connect With Us</b></font></a>
 
                     <div class="modal fade bs-example-modal-lg-5" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -108,7 +55,7 @@
 								<div class="media">
                                     <div class="media-left">
 
-                                        <img class="media-object" src="<?php echo base_url('resources/images/amitsir.jpg') ?>" height="90" width="90">
+                                        <img class="media-object" src="<?php echo $this->cdn->res_url('resources/images/amitsir.jpg') ?>" height="90" width="90">
 
                                     </div>
 											<div class="media-body">
@@ -122,7 +69,7 @@
                                 <div class="media">
                                     <div class="media-left">
 
-                                        <img class="media-object" src="<?php echo base_url('resources/images/varun.jpg') ?>" height="90" width="90">
+                                        <img class="media-object" src="<?php echo $this->cdn->res_url('resources/images/varun.jpg') ?>" height="90" width="90">
 
                                     </div>
                                     <div class="media-body">
@@ -137,7 +84,7 @@
                                 <div class="media">
                                     <div class="media-left media-middle">
 
-                                        <img class="media-object" src="<?php echo base_url('resources/images/rajat.jpg') ?>" height="90" width="90">
+                                        <img class="media-object" src="<?php echo $this->cdn->res_url('resources/images/rajat.jpg') ?>" height="90" width="90">
 
                                     </div>
                                     <div class="media-body">
@@ -150,7 +97,7 @@
                                 <div class="media">
                                     <div class="media-left media-middle">
 
-                                        <img class="media-object" src="<?php echo base_url('resources/images/sarthak.jpg') ?>" height="90" width="90">
+                                        <img class="media-object" src="<?php echo $this->cdn->res_url('resources/images/sarthak.jpg') ?>" height="90" width="90">
 
                                     </div>
                                     <div class="media-body">
@@ -163,7 +110,7 @@
                                 <div class="media">
                                     <div class="media-left media-middle">
 
-                                        <img class="media-object" src="<?php echo base_url('resources/images/shobhit.jpg') ?>" height="90" width="90">
+                                        <img class="media-object" src="<?php echo $this->cdn->res_url('resources/images/shobhit.jpg') ?>" height="90" width="90">
 
                                     </div>
                                     <div class="media-body">
@@ -176,7 +123,7 @@
                                 <div class="media">
                                     <div class="media-left media-middle">
 
-                                        <img class="media-object" src="<?php echo base_url('resources/images/bhawesh.jpg') ?>" height="90" width="90">
+                                        <img class="media-object" src="<?php echo $this->cdn->res_url('resources/images/bhawesh.jpg') ?>" height="90" width="90">
 
                                     </div>
                                     <div class="media-body">
@@ -191,59 +138,44 @@
                             </div>
                         </div>
                     </div>
-                    <br>
-                    
-                    <button type="button" class="btn btn-block" onclick="location.href='<?php echo site_url('feat/opportunities')?>'">Opportunities</button>
+					<br/><br/>
+             <a href="<?php echo site_url('feat/opportunities')?>" style="cursor:pointer;"><font color = "white"><b>Opportunities</b></font></a>
                 
             </div>
-			<div class = "col-md-1">
-			</div>
-			<div class="col-md-3">
-			<h4><b><font color = "white">GOOGLE GROUPS</font></b></h4>
 			
-											<li><a href="https://groups.google.com/forum/#!forum/ict_softb" ><font color="black"><b>Computer Science 2011-16</b></font></a></li>
-                                        &nbsp;  <li><a href="https://groups.google.com/forum/#!forum/gbucs2012" ><font color="black"><b>Computer Science 2012-17</b></font></a></li>
-                                        &nbsp;  <li><a href="https://groups.google.com/forum/#!forum/gbu-cs-102-2013" ><font color="black"><b>Computer Science 2013-18</b></font></a></li>
-                                        &nbsp;  <li><a href="https://groups.google.com/forum/#!forum/gbuec2013" ><font color="black"><b>Electronics 2013-18</b></font></a></li>
-                                        &nbsp;  <li><a href="https://groups.google.com/forum/#!forum/gbu-cs-2014" ><font color="black"><b>Computer Science 2014-19</b></font></a></li>
-                                        &nbsp;  <li><a href="https://groups.google.com/forum/#!forum/gbu-ec-2014-19" ><font color="black"><b>Electronics 2014-19</b></font></a></li>
-                                        &nbsp;  <li><a href="https://groups.google.com/forum/#!forum/civil-2014-gbu" ><font color="black"><b>Civil 2014-19</b></font></a></li>
-                                        &nbsp;  <li><a href="https://groups.google.com/forum/#!forum/gbu-mba-2014" ><font color="black"><b>MBA 2014</b></font></a></li>
-</div>
-
+			
 <div class = "col-md-3">
-<h4><b><font color = "white">QUICK LINKS</font></b></h4>
-
-<a href = "http://math.gbuonline.in"><font color = "black"><b><i>Maths Site</i></b></font></a><br><br>
-<a href = "http://gbu.ac.in"><font color = "black"><b><i>Official Website</i></b></font></a>
-
+<a href = "http://math.gbuonline.in"  target="_blank"><font color = "white"><b>Maths Site</b></font></a><br><br>
+<a href = "http://gbu.ac.in"  target="_blank"><font color = "white"><b>Official Website</b></font></a><br><br>
+<a href = "<?php echo site_url('feat/ggroups')?>"><font color = "white"><b>Google Groups</b></font></a><br><br>
+<a href = "https://plus.google.com/+GAUTAMBUDDHAUNIVERSITYGREATERNOIDA"  target="_blank"><font color = "white"><b>Gbu.code</b></font></a>
 </div>
-        </div>
-        
-        <br>
-		<div class="row">
-		<div class = "col-md-10"></div>
-		<div class = "col-md-2">
-		<!-- AddToAny BEGIN -->
-<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-<a class="a2a_button_facebook"></a>
-<a class="a2a_button_twitter"></a>
-<a class="a2a_button_google_plus"></a>
-</div>
-
-<!-- AddToAny END -->
+        <div class = "col-md-3">
+		<a href = "<?php echo site_url('feat/tou')?>"><font color = "white"><b>Terms of use</b></font></a><br><br>
+<a href = "https://github.com/opengbu/gbuonline" target="_blank"><font color = "white"><b>GitHub</b></font></a><br><br>
+		<a href = "<?php echo site_url('feat/feedback')?>" ><font color = "white"><b>Feedback</b></font></a><br><br>
+<a href = "<?php echo site_url('feat/advertise')?>"><font color = "white"><b>Advertise</b></font></a>
 		</div>
+		
+		<div class = "col-md-3">
+		
+<a href = "<?php echo site_url('clubs/home')?>"><font color = "white"><b>Clubs</b></font></a><br><br>
+<a href = "<?php echo site_url('feat/placements')?>"><font color = "white"><b>Placements</b></font></a><br><br>
+<a href = "<?php echo site_url('feat/downloads')?>"><font color = "white"><b>Downloads</b></font></a><br><br>
+<a href = "<?php echo site_url('feat/student_chapters')?>"><font color = "white"><b>Student Chapters</b></font></a>
+		
 		</div>
-
-        <div class="row">
+		
+		</div>
+		<br/>
+		<hr style=" border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3);">
+			
             <div class="col-md-12 text-center">
-                <p>
-                    <b>&copy; kNight_Coders</b>
-                </p>
-
-            </div>
-
-        </div>
+                
+                    <b><p style = "color:white;">&copy; OpenGBU, Inc.</p></b>
+              
+       </div>
+        
 
     </footer>
 

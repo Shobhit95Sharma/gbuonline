@@ -110,22 +110,22 @@ $(function(){
 				<!--Loop Starts-->
 				
 				<?php
-                                        $q=$this->db->query("select * from vnb");
+                                        $q=$this->db->query("SELECT link,title,full_name,date FROM vnb,users WHERE vnb.user_id=users.user_id ORDER BY date DESC");
                                         $results=$q->result();
 					foreach($results as $rows)
 					{
                                             
                                             
                                             ?>                      
-							<a href="<?php echo base_url($rows->link) ?>" class="list-group-item">
+							<a href="<?php echo base_url($rows->link) ?>" target="_blank" class="list-group-item">
 								<div class="row">
 									<div class="col-md-8">
 										<h4 class="list-group-item-heading"><?php echo $rows->title;?></h4>
-										<p class="list-group-item-text"><b>Posted By:</b> <?php echo $rows->posted_by; ?></p>
+										<p class="list-group-item-text"><b>Posted By:</b> <?php echo $rows->full_name; ?></p>
 									</div>
 									<div class="col-md-4" style="padding-top: 10px;">
 										<center>
-											<span class="badge" > <?php echo $rows->date;?> </span>    
+											<span class="badge" > <?php echo date("d-m-Y", strtotime($rows->date));?> </span>    
 										</center>
 									</div>
 								</div>

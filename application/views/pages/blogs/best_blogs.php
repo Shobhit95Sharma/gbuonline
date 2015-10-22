@@ -1,6 +1,16 @@
 <script>
     var count_comments = true;
+	
+	//activate the tooltips
+	$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+	})
+
 </script>
+
+<?php
+$user_id = $this->session->userdata("user_id");
+?>
 
 <!--This page is sorted according to the "Time" of a blog-->
 
@@ -15,6 +25,9 @@
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-default" onclick="location.href = '<?php echo site_url('blogs/write_blogs') ?>'">Write Blogs</button>
                     </div>
+					<div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default" onclick="location.href = '<?php echo site_url('blogs/your_blogs') ?>'">Edit Blogs</button>
+                    </div>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-primary" onclick="location.href = '<?php echo site_url('blogs/best_blogs') ?>'">Best Blogs</button>
                     </div>
@@ -26,14 +39,26 @@
 
             <?php
             $get_blogs_q = $this->db->query("select blog.*, full_name,roll_number, count(blog_likes.user_id) as likes from blog,users,blog_likes  where status = 1 and blog.user_id = users.user_id and blog_likes.blog_id = blog.id group by blog.id order by likes desc;");
-            $count = 0;
+            //$count = 0;
             foreach ($get_blogs_q->result() as $row) {
-                $count ++;
-                if ($count > 4)
-                    break;
+              //  $count ++;
+               // if ($count > 4)
+                  //  break;
                 
                 $like_count_q = $this->db->query("select count(*) as like_count from blog_likes where blog_id = '$row->id'");
                 $like_count = $like_count_q->row();
+				
+				$numb = $this->db->query("select * from blog_likes where blog_id = '$row->id' and user_id = '$user_id'");
+				if ($numb->num_rows() == 0)
+				{
+					$clor = "primary";
+					$txt = "Like this blog";
+				}
+				else
+				{
+					$clor = "warning";
+					$txt = "Un-Like this blog";
+				}
                 ?>
                 
                 <div class="panel panel-danger">
@@ -43,14 +68,14 @@
                                 </a></b></h3>
                     </div>
                     <div class="panel-body" style="text-align: justify;">
-                        <?= $row->description ?> ... 
+                        <?= substr($row->description, 0, 463) ?> ... 
                         <a href="<?php echo site_url('blogs/read_blogs?blog_id=' . $row->id) ?>">Read More</a><br>
 
                     </div>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col-md-4">
-                                <a href="<?=site_url('blogs/like?blog_id='.$row->id. '&redirect2='.  current_url() )?>" class="btn btn-primary btn-md" >
+                            <div class="col-md-5">
+                                <a href="<?=site_url('blogs/like?blog_id='.$row->id. '&redirect2='.  current_url() )?>" class="btn btn-<?=$clor?> btn-md" data-toggle="tooltip" data-placement="top" title="<?=$txt?>" >
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> &nbsp;
                                     <span class="badge"><?=$like_count->like_count ?></span>
                                 </a>&nbsp;
@@ -58,13 +83,13 @@
                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> &nbsp;
                                     <span class="badge">Share</span>
                                 </button>&nbsp;
-                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target=".blogs">
+                                <button type="button" class="btn btn-primary btn-md" onclick="location.href='<?php echo site_url('blogs/read_blogs?blog_id=' .$row->id.'#koment')?>'">
                                     <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> &nbsp;
                                     <span class="badge"><a href="<?php echo site_url('blogs/read_blogs?blog_id=' . $row->id) ?>#disqus_thread" data-disqus-identifier="blog_<?= $row->id ?>"></a></span>
                                 </button>
                             </div>
-                            <div class="col-md-8" style="text-align: right;  ">
-                                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target=".blogs"><span><?= $row->full_name ?></span> &nbsp;
+                            <div class="col-md-7" style="text-align: right;  ">
+                                <button type="button" class="btn btn-primary btn-md"><span><?= $row->full_name ?></span> &nbsp;
                                     <?php
                                     if ($row->roll_number != NULL) {
                                         ?>
@@ -87,9 +112,8 @@
                                 <br>
                                 <b>Share on Social Media</b>
                                 <br><br>
-                                <span class='st_facebook_large' st_url="<?php echo site_url('blogs/read_blogs?blog_id=' . $row->id) ?>" displayText='Facebook'></span>&nbsp;
-                                <span class='st_googleplus_large' st_url="<?php echo site_url('blogs/read_blogs?blog_id=' . $row->id) ?>" displayText='Google +'></span>&nbsp;
-                                <span class='st_twitter_large' st_url="<?php echo site_url('blogs/read_blogs?blog_id=' . $row->id) ?>" displayText='Tweet'></span>
+                                <!-- Place this tag where you want the share button to render. -->
+								<div class="g-plus" data-action="share" data-annotation="bubble" data-height="50" data-width="100" data-href="http://www.gbuonline.in/blogs/read_blogs?blog_id=<?= $row->id ?>"></div>
                                 <br>
                                 <br>
                             </center>
@@ -109,3 +133,6 @@
 
         <!--row ends in extras-->
         <!--container ends in extras-->
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script src="https://apis.google.com/js/platform.js" async defer></script>	

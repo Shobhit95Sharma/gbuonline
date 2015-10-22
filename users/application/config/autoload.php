@@ -137,4 +137,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array( 'permissions_model' => 'permissions', 'Logs_model' => 'logger','Cdn_model' => 'cdn');
